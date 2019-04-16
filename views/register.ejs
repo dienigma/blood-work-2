@@ -1,6 +1,27 @@
-<form action="/users/register" method="post">
-<input type="text" name="username" placeholder="Enter a username">
-<input type="password" name="password" placeholder="password">
-<button type="submit">Register</button>
+<% include partials/header %>
 
-</form>
+<div class="container">
+        <div class="card" style="width: 18rem; margin: 150px auto;">
+            <div class="card-body">
+                <form action="/users/register" method="POST">
+                    <div class="form-group">
+                      <label for="inputUserName">Username</label>
+                      <input type="text" class="form-control" id="inputUserName"  placeholder="Enter username" name = "username">
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="inputPassword">Password</label>
+                      <input type="password" class="form-control" id="inputPassword" placeholder="Password" name= "password">
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">register</button>
+                  </form>
+            </div>
+          </div>
+    </div>
+    
+
+<% include partials/footer %>

@@ -6,7 +6,6 @@ var logger = require('morgan');
 const session = require('cookie-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const reportsRouter = require('./routes/reports')
 const bodyParser = require('body-parser')
 var app = express();
 
@@ -37,7 +36,6 @@ passport.deserializeUser(db.User.deserializeUser());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/reports',reportsRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
