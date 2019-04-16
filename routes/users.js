@@ -42,7 +42,7 @@ router.get('/reports',(req,res) =>{
 })
 
 router.get('/upload-report',(req,res)=>{
-  res.render('uploadReports')
+  res.render('upload-report')
 })
 
 router.get('/account', function (req,res){
