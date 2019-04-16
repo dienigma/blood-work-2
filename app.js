@@ -12,7 +12,7 @@ var app = express();
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-
+const {isLoggedIn} = require('./middleware')
 
 
 app.use(passport.initialize());
@@ -36,7 +36,7 @@ passport.deserializeUser(db.User.deserializeUser());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use(isLoggedIn)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

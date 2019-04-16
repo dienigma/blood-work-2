@@ -4,6 +4,13 @@ const passport = require('passport');
 const db = require('../models')
 const multer  = require('multer')
 const upload = multer({ dest: 'uploads/' })
+const path = require('path')
+let fs = require('fs'),
+PDFParser = require("pdf2json");
+
+let pdfParser = new PDFParser();
+
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
@@ -40,11 +47,7 @@ router.get('/logout', function(req, res) {
   res.redirect('/')
 })
 router.get('/reports',(req,res) =>{
-  db.Report.find()
-  .then(data => {
-    console.log(data)
-    res.render('reports',{data:data})})
-  .catch(err => res.send(err))
+  res.render('reports')
 })
 
 router.get('/upload-report',(req,res)=>{
@@ -53,9 +56,13 @@ router.get('/upload-report',(req,res)=>{
 
 router.post('/upload-report',upload.single('report'),(req,res)=> {
   console.log(req.file)
-  db.Report.create({data:req.file.path})
-  .then(res.send("Success"))
-  .catch(err => res.send(err))
+  // const filepath = req.file.path
+  
+  pdfParser.on("pdfParser_dataError", errData => console.error(errData.parserError) );
+  pdfParser.on("pdfParser_dataReady", pdfData => {
+      fs.writeFile("./pdf2json/F1040EZ.json", JSON.stringify(pdfData));
+  });
+  pdfParser.loadPDF("./pdf2json/pdf/fd/form/F1040EZ.pdf");
 })
 
 router.get('/account', function (req,res){
