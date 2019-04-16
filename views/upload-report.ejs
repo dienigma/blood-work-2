@@ -4,8 +4,9 @@
 <div class="container">
     <div class="card" style="width: 18rem; margin: 150px auto;">
         <div class="card-body">
-            <form action="/profile" method="post" enctype="multipart/form-data">
-                <input type="file" name="avatar"/>
+            <form action="/users/upload-report" method="post" enctype="multipart/form-data">
+                <input type="file" name="report"/>
+                <button class="btn btn-primary" type="submit">Upload</button>
             </form>
         </div>
       </div>

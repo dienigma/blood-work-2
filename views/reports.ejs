@@ -1,7 +1,10 @@
 <% include partials/header %>
 
 <div class="container">
-    <h1>Reports</h1>
+    <% data.forEach(element => {%>
+    <div><%= element %></div>
+
+    <%})%>
 </div>
 
 <% include partials/footer %>
