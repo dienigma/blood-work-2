@@ -30,7 +30,7 @@ router.get('/login', function(req, res) {
 })
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
-  res.redirect('/reports')
+  res.redirect('/users/reports')
 })
 
 router.get('/logout', function(req, res) {
@@ -39,6 +39,10 @@ router.get('/logout', function(req, res) {
 })
 router.get('/reports',(req,res) =>{
   res.render('reports')
+})
+
+router.get('/upload-report',(req,res)=>{
+  res.render('uploadReports')
 })
 
 router.get('/account', function (req,res){
